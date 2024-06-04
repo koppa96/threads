@@ -13,6 +13,7 @@ import (
 type ThreadDetails struct {
 	ID          string     `json:"id"`
 	Name        string     `json:"name"`
+	Description string     `json:"description"`
 	LastMessage *time.Time `json:"lastMessage,omitempty"`
 	Messages    int        `json:"messages"`
 }
@@ -63,6 +64,7 @@ func (r *GetByIDResource) Handle(c echo.Context) error {
 	return c.JSON(http.StatusOK, ThreadDetails{
 		ID:          thread.ID,
 		Name:        thread.Name,
+		Description: thread.Description,
 		LastMessage: lastMessage,
 		Messages:    messageCount,
 	})

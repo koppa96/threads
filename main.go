@@ -14,6 +14,7 @@ func main() {
 			NewClient,
 			resources.AsResource(threads.NewGetAllResource),
 			resources.AsResource(threads.NewGetByIDResource),
+			resources.AsResource(threads.NewCreateThreadResource),
 			fx.Annotate(
 				NewEcho,
 				fx.ParamTags("", "", `group:"routes"`),
