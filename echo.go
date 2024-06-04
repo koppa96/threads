@@ -17,7 +17,10 @@ func NewEcho(lc fx.Lifecycle, config *Config, resources []resources.Resource) *e
 
 	lc.Append(fx.Hook{
 		OnStart: func(ctx context.Context) error {
-			go e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", config.BindPort)))
+			go func() {
+				e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", config.BindPort)))
+			}()
+
 			return nil
 		},
 		OnStop: func(ctx context.Context) error {
